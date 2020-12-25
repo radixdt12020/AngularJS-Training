@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="Script/angular.min.js"></script>
+    <script src="Script/main.js"></script>
+    <script src="Script/product.js"></script>
+</head>
+<body ng-app="myapp">
+    <div class="container">
+
+        <div>
+            <h2>Using ng-init and default value</h2>
+            <div ng-init="Name='Realme XT Mobile';Price=5000;Quantity=5">
+                <div>
+                    Product Name is {{Name | uppercase}}<br />
+                    Product Price is {{Price | currency}}<br />
+                    Product Quantity is {{Quantity}}<br />
+                    Sale value is {{Price * Quantity | currency}}<br />
+                </div>
+            </div>
+
+            <br /><br />
+
+            <h2>Using controller and scope property</h2>
+            <div ng-controller="ProductController">
+                <form name="myForm">
+                    <div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" id="ProdName" name="ProdName" ng-model="ProdName" required class="form-control" />
+                            <span ng-show="myForm.ProdName.$touched && myForm.ProdName.$invalid" style="color:red">The Product name is required.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Price</label>
+                            <input type="text" id="ProdPrice" name="ProdPrice" ng-model="ProdPrice" required class="form-control" />
+                            <span ng-show="myForm.ProdPrice.$touched && myForm.ProdPrice.$invalid" style="color:red">The Product price is required.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Quantity</label>
+                            <input type="text" id="ProdQuantity" name="ProdQuantity" ng-model="ProdQuantity" required class="form-control" />
+                            <span ng-show="myForm.ProdQuantity.$touched && myForm.ProdQuantity.$invalid" style="color:red">The Product quantity is required.</span>
+                        </div>
+
+                        <button ng-click="CalculateSaleValue()" class="btn btn-default">Calculate Sale Value</button>
+                        <button ng-click="Reset()" class="btn btn-default">Reset</button>
+                    </div>
+                </form><br />
+
+                <div>
+                    Product Name is {{ProdName | uppercase}}<br />
+                    Product Price is {{ProdPrice | currency }}<br />
+                    Product Quantity is {{ProdQuantity}}<br />
+                    Sale value is {{ProdSaleValue | currency }}<br />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
