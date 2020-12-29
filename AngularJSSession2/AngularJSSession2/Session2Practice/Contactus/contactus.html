@@ -1,0 +1,40 @@
+﻿
+<div ng-controller="contactusController">
+
+    {{Message}}
+    <br /><br />
+    <div>
+        <form name="myForm">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="Name" ng-model="Name" class="form-control" placeholder="Name" required />
+                <span style="color:red" ng-show="myForm.Name.$touched && myForm.Name.$invalid">
+                    <span ng-show="myForm.Name.$error.required">Name is required.</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="Email" ng-model="Email" class="form-control" placeholder="Email" required />
+                <span style="color:red" ng-show="myForm.Email.$touched && myForm.Email.$invalid">
+                    <span ng-show="myForm.Email.$error.required">Email is required.</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label>MobileNo</label>
+                <input type="text" name="MobileNo" ng-model="MobileNo" class="form-control" placeholder="MobileNo" required maxlength="10"/>
+                <span style="color:red" ng-show="myForm.MobileNo.$touched && myForm.MobileNo.$invalid">
+                    <span ng-show="myForm.MobileNo.$error.required">MobileNo is required.</span>
+                </span>
+            </div>
+            <br />
+            <input type="button" class="btn btn-success" value="Submit" ng-click="Submit()" ng-disabled="myForm.$invalid" />
+            <input type="button" class="btn btn-default" value="Reset" ng-click="Reset()" />
+        </form>
+    </div>
+    <br /><br />
+    <div ng-show="IsSubmit">
+       Name: <span ng-bind="Name"></span><br />
+       Email: <span ng-bind="Email"></span><br />
+       MobileNo: <span ng-bind="MobileNo"></span><br />
+    </div>
+</div>

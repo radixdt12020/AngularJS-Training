@@ -1,0 +1,47 @@
+﻿<div ng-controller="productController" class="">
+    <div class="row" ng-show="showMsg">
+        <div class="col-xs-12">
+            <p class="alert alert-success">
+                <strong>{{message}}</strong>
+            </p>
+        </div>
+    </div>
+    <h2>Product Details:</h2>
+    <div>
+        <a href="#!productAdd" class="btn btn-primary" title="Add New Product">Add New Product</a>
+        <br /><br />
+        <table class="table table-striped table-bordered">
+            <thead class="">
+                <tr>
+                    <th>Id</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>In Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prod in ProductList">
+                    <td>{{prod.ProdId}}</td>
+                    <td>{{prod.ProdCode}}</td>
+                    <td>{{prod.ProdName}}</td>
+                    <td>{{prod.ProdCategory}}</td>
+                    <td>{{prod.ProdBrand}}</td>
+                    <td>{{prod.ProdColor}}</td>
+                    <td>{{prod.ProdPrice}}</td>
+                    <td>
+                        {{prod.ProdInStock}}
+                    </td>
+                    <td>
+                        <a href="#!productEdit/{{prod.ProdId}}" class="btn btn-primary btn-xs" title="Edit Product"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="#!productDelete/{{prod.ProdId}}" class="btn btn-danger btn-xs" title="Delete Product"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
