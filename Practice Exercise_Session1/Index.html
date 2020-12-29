@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Practice Exercise Session 1</title>
+    <link href="../Content/assets/css/bootstrap_3.3.7/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/assets/css/style.css" rel="stylesheet" />
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Content/assets/js/main.js"></script>
+    <script src="../Content/assets/js/productController.js"></script>
+</head>
+
+<body ng-app="myapp" ng-init="pName='Dell Laptop';pPrice='15000';pQty='2'">
+    <h1>From Page Level</h1>
+    <div class="main">
+        <h2>Fill up Product Info</h2>
+        <form>
+            <div class="form-group">
+                <label for="pName">Name</label>
+                <input type="text" class="form-control" id="pName" name="pName" placeholder="Enter Product Name" ng-model="pName">
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Price</label>
+                <input type="text" class="form-control" id="pPrice" name="pPrice" placeholder="Enter Product Price" ng-model="pPrice">
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Quantity</label>
+                <input type="text" class="form-control" id="pQty" name="pQty" placeholder="Enter Product Quantity" ng-model="pQty">
+            </div>
+        </form>
+    </div>
+
+    <div class="main">
+        <h2>Product Info</h2>
+        <span class="text-center">Name: {{pName | uppercase}}</span> <br/>
+        <label class="text-center" ng-show="pQty > 0 && pPrice > 0">Sale Value: {{pPrice*pQty | currency}}</label>
+    </div>
+    <hr />
+    <h1>From Controller</h1>
+    <div class="main" ng-controller="ProductController">
+        <div class="formDiv">
+            <h2>Fill up Product Info</h2>
+            <form>
+                <div class="form-group">
+                <label for="pName">Name</label>
+                <input type="text" class="form-control" id="pName" name="pName" placeholder="Enter Product Name" ng-model="pName">
+                </div>
+
+                <div class="form-group">
+                <label for="lname">Price</label>
+                <input type="text" class="form-control" id="pPrice" name="pPrice" placeholder="Enter Product Price" ng-model="pPrice">
+                </div>
+
+                <div class="form-group">
+                <label for="lname">Quantity</label>
+                <input type="number" class="form-control" min="0" id="pQty" name="pQty" placeholder="Enter Product Quantity" ng-model="pQty">
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Calculate Sale Value" ng-click="calculateSaleValue()">
+            </form>
+        </div>
+
+        <div ng-show="isBtnClicked">
+            <h2>Product Info</h2>
+            <span class="text-center">Name: {{pName | uppercase}}</span> <br />
+            <label class="text-center">Sale Value: {{pSaleValue | currency}}</label>
+        </div>
+    </div>
+</body>
+
+</html>

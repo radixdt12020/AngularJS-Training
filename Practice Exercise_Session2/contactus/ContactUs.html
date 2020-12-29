@@ -1,0 +1,28 @@
+﻿<div ng-controller="contactUsCtrl">
+    <h3>Contact Us</h3>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" ng-model="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Id</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Id" ng-model="email">
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Provide Comment</label>
+            <textarea id="comment" class="form-control" name="comment" rows="4" cols="50" ng-model="comment"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="saveValue()">Submit</button>
+        </div>
+    </form>
+    <div ng-show="isBtnClicked">
+        <h2>Your Info</h2>
+        <label class="text-center">Name: {{name}}</label> <br />
+        <label class="text-center">Email Id: {{email}}</label><br />
+        <label class="text-center">Comment: </label><p>{{comment}}</p>
+    </div>
+</div>

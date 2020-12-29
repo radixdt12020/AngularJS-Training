@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Assignment Session 1</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="../Content/assets/css/bootstrap_3.3.7/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/assets/css/style.css" rel="stylesheet" />
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Content/assets/js/main.js"></script>
+    <script src="../Content/assets/js/employeeController.js"></script>
+    <script src="../Content/assets/js/employeeDirective.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="EmployeeController">
+    <div class="main">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" name="employeeForm">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="id">Create/Provide Employee Code</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="empCode" name="empCode" placeholder="For example, 5678"
+                                   ng-model="employee.empCode" required employee-directive>
+                            <span class="text-danger" ng-show="employeeForm.empCode.$touched && employeeForm.empCode.$invalid">
+                                <span ng-show="employeeForm.empCode.$error.required">
+                                    Employee Code is
+                                    required.
+                                </span>
+                                <span ng-show="employeeForm.empCode.$error.isExistEmpCode">
+                                    This Employee Code is
+                                    already available.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name"
+                                   ng-model="employee.name" required>
+                            <span class="text-danger" ng-show="employeeForm.name.$touched && employeeForm.name.$invalid">
+                                <span ng-show="employeeForm.name.$error.required">
+                                    Name is
+                                    required.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="gender">Select Gender</label>
+                        <div class="col-sm-10">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" id="male" name="gender" ng-model="employee.gender"
+                                           value="M">Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" id="female" name="gender" ng-model="employee.gender"
+                                           value="F">Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" id="other" name="gender" ng-model="employee.gender"
+                                           value="O">Others
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="age">Age</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0" id="age" name="age"
+                                   placeholder="Enter Your Age" ng-model="employee.age" required>
+                            <span class="text-danger" ng-show="employeeForm.age.$touched && employeeForm.age.$invalid">
+                                <span ng-show="employeeForm.age.$error.required">
+                                    Age is
+                                    required.
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="location">Location</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="location" name="location"
+                                   placeholder="Enter Location" ng-model="employee.location" required>
+                            <span class="text-danger" ng-show="employeeForm.location.$touched && employeeForm.location.$invalid">
+                                <span ng-show="employeeForm.location.$error.required">
+                                    Location is
+                                    required.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="emailId">Email address</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="emailId" name="emailId"
+                                   placeholder="Enter Your Email Id" ng-model="employee.emailId" required>
+                            <span class="text-danger" ng-show="employeeForm.emailId.$touched && employeeForm.empCode.$invalid">
+                                <span ng-show="employeeForm.emailId.$error.required">
+                                    Email address is
+                                    required.
+                                </span>
+                                <span ng-show="employeeForm.emailId.$error.email">
+                                    Invalid email address.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="phNumber">Contact Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="phNumber" name="phNumber"
+                                   placeholder="Enter Contact Number" ng-model="employee.phNumber" required>
+                            <span class="text-danger" ng-show="employeeForm.phNumber.$touched && employeeForm.age.$invalid">
+                                <span ng-show="employeeForm.phNumber.$error.required">
+                                    Contact Number is
+                                    required.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" l for="emailId">Date of Joining</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="doj" name="doj" ng-model="employee.doj"
+                                   data-date-format="dd-mm-yyyy" required>
+                            <span class="text-danger" ng-show="employeeForm.doj.$touched && employeeForm.age.$invalid">
+                                <span ng-show="employeeForm.doj.$error.required">
+                                    Date of joining is
+                                    required.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="designation">Select Designation</label>
+                        <div class="col-sm-10">
+                            <select id="designation" class="form-control" name="designation"
+                                    ng-model="employee.designation">
+                                <option value="">--- Select ---</option>
+                                <option value="trainee">Trainee</option>
+                                <option value="jr_engineer">Junior Software Engineer</option>
+                                <option value="engineer">Software Engineer</option>
+                                <option value="sr_engineer">Senior Software Engineer</option>
+                                <option value="pr_lead">Project Lead</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="salary">Salary</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" min="0" id="salary" name="salary"
+                                   placeholder="Salary Per Month" ng-model="employee.salary">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success" ng-disabled="employeeForm.$invalid"
+                                    ng-click="addEditEmployee(employee.empCode)">
+                                Add / Edit Employee
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="resetData()">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center">Employees List</h2>
+    <div class="mainList">
+        <div class="row">
+            <table class="table table-striped">
+                <tr>
+                    <th>Employee Code</th>
+                    <th>Name - Gender</th>
+                    <th>Age</th>
+                    <th>Designation</th>
+                    <th>Salary Per Month</th>
+                    <th>Location</th>
+                    <th>Email Id</th>
+                    <th>Date of Joining</th>
+                    <th>Contact Number</th>
+                    <th>Actions</th>
+                </tr>
+                <tr ng-repeat="emp in employeeList">
+                    <td>{{emp.empCode}}</td>
+                    <td>{{emp.name}} - ({{emp.gender}})</td>
+                    <td>{{emp.age}}</td>
+                    <td ng-switch on="emp.designation">
+                        <span ng-switch-when="trainee">Trainee</span>
+                        <span ng-switch-when="jr_engineer">Junior Software Engineer</span>
+                        <span ng-switch-when="engineer">Software Engineer</span>
+                        <span ng-switch-when="sr_engineer">Senior Software Engineer</span>
+                        <span ng-switch-when="pr_lead">Project Lead</span>
+                        <span ng-switch-default></span>
+                    </td>
+                    <td>{{emp.salary | currency:'&#8377;'}}</td>
+                    <td>{{emp.location}}</td>
+                    <td>{{emp.emailId}}</td>
+                    <td>{{emp.doj | date:'dd-MM-yyyy'}}</td>
+                    <td>{{emp.phNumber}}</td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="editEmployee(emp.empCode)">Edit</button>
+                        <button class="btn btn-primary" ng-click="deleteEmployee(emp.empCode)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
