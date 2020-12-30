@@ -8,6 +8,7 @@
     <script src="../Scripts/angular-route.min.js"></script>
     <script src="main.js"></script>
     <script src="Product/product.js"></script>
+    <script src="login.js"></script>
     <script src="Service/productService.js"></script>
     <style>
         .ErrorMessage {
@@ -22,11 +23,14 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/!">Routing Assignment</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#!productList">Product</a></li>               
+            <ul class="nav navbar-nav" ng-controller="mainController">
+                <li ng-show="IsLogin"><a href="#!productList">Product</a></li>
+                <li ng-show="!IsLogin"><a href="#!login">Login</a></li>
+                <li ng-show="IsLogin"><a ng-click="Logout()" href="">Logout</a></li>
             </ul>
         </div>
     </nav>
+    
     <div class="container">
         <div ng-view></div>
     </div>

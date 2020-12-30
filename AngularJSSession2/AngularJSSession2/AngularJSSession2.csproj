@@ -79,6 +79,8 @@
     <Content Include="Session2Assignment\Product\productAdd.html" />
     <Content Include="Session2Assignment\Product\product.js" />
     <Content Include="Session2Assignment\Service\productService.js" />
+    <Content Include="Session2Practice2\Index.html" />
+    <Content Include="Session2Practice2\main.js" />
     <Content Include="Session2Practice\Aboutus\aboutus.html" />
     <Content Include="Session2Practice\Aboutus\aboutus.js" />
     <Content Include="Session2Practice\Contactus\contactus.html" />

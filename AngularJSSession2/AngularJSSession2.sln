@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSSession2", "AngularJSSession2\AngularJSSession2.csproj", "{46CE4223-9208-41B0-BB0E-D14359A82D78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductInventoryAPI", "ProductInventoryAPI\ProductInventoryAPI.csproj", "{7EB2E13B-0FE8-41AF-B5F7-CC08A20F086C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{46CE4223-9208-41B0-BB0E-D14359A82D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46CE4223-9208-41B0-BB0E-D14359A82D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46CE4223-9208-41B0-BB0E-D14359A82D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB2E13B-0FE8-41AF-B5F7-CC08A20F086C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB2E13B-0FE8-41AF-B5F7-CC08A20F086C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB2E13B-0FE8-41AF-B5F7-CC08A20F086C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB2E13B-0FE8-41AF-B5F7-CC08A20F086C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
