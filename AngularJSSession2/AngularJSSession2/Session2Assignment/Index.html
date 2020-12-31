@@ -18,21 +18,29 @@
 
 </head>
 <body ng-app="myapp">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#/!">Routing Assignment</a>
+    <div ng-controller="mainController">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#/!">Routing Assignment</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ng-show="IsLogin"><a href="#!productList">Product</a></li>
+                    <li ng-show="!IsLogin"><a href="#!login">Login</a></li>
+                    <li ng-show="IsLogin"><a ng-click="Logout()" href="">Logout</a></li>
+                    <li class=""><a><span ng-show="!IsLogin" style="color:red;">You are not logged in...!</span><span ng-show="IsLogin" style="color:green">You are logged in...!</span></a></li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav" ng-controller="mainController">
-                <li ng-show="IsLogin"><a href="#!productList">Product</a></li>
-                <li ng-show="!IsLogin"><a href="#!login">Login</a></li>
-                <li ng-show="IsLogin"><a ng-click="Logout()" href="">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-    
+        </nav>
+
+        <br />
+    </div>
+
     <div class="container">
         <div ng-view></div>
     </div>
+    <!--<ng-include src=" 'Login.html' " ng-if="!IsLogin"></ng-include>-->
+    <!--<ng-include src=" 'home.html' "></ng-include>-->
+
 </body>
 </html>

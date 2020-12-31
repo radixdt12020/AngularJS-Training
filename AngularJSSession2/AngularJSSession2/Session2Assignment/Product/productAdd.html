@@ -3,7 +3,10 @@
     <h2>Add Product:</h2>
     <div class="row" ng-show="showMsg">
         <div class="col-xs-12">
-            <p class="alert alert-success">
+            <p class="alert alert-success" ng-show="IsSuccess">
+                <strong>{{message}}</strong>
+            </p>
+            <p class="alert alert-danger" ng-show="!IsSuccess">
                 <strong>{{message}}</strong>
             </p>
         </div>
@@ -12,7 +15,7 @@
     <form name="myForm">
 
         <div class="row">
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <div class="form-group">
                     <label>Product Code</label>
                     <input type="text" id="ProdCode" name="ProdCode" ng-model="ObjProduct.ProdCode" required class="form-control" maxlength="5" placeholder="Product Code" />
@@ -21,7 +24,7 @@
                         <span ng-show="myForm.ProdCode.$error.maxlength">Max length of Product Code is 5.</span>
                     </span>
                 </div>
-            </div>
+            </div>-->
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Product Name</label>

@@ -6,9 +6,9 @@ app.config(function ($routeProvider) {
             template: "<div>Welcome to Product Inventory Application...!</div>",
             controller: "mainController"
         })
-        .when("/productList",{
+        .when("/productList", {
             templateUrl: "Product/productList.html",
-            controller:"productController"
+            controller: "productController"
         })
         .when("/productAdd", {
             templateUrl: "Product/productAdd.html",
@@ -25,24 +25,29 @@ app.config(function ($routeProvider) {
         .when("/login", {
             templateUrl: "Login.html",
             controller: "loginController"
-        })
+        })        
 });
 
-app.controller("mainController", function ($scope, $window,$location) {
-    $scope.IsLogin = false;   
-    var id = sessionStorage.getItem("IsLogin");   
+app.controller("mainController", function ($scope, $window, $location) {
+
+    $scope.IsLogin = false;
+    var id = $window.sessionStorage.getItem("IsLogin");
+
     if (id) {
-        $scope.IsLogin = true;
-        //alert("s");
+        $scope.IsLogin = true;        
     } else {
-        $scope.IsLogin = false;
-        //alert("f");
+        $scope.IsLogin = false;        
     }
+    $location.path("/");
 
     $scope.Logout = function () {
-        sessionStorage.removeItem("IsLogin");        
-        $scope.IsLogin = false;
-        //$location.path("/login");
-        $window.location.reload();
+        var check = confirm("Are you sure want to logout?");
+        if (check) {
+            $window.sessionStorage.removeItem("IsLogin");
+            $scope.IsLogin = false;
+            $location.url("/");
+            //$window.location.reload();
+        }
     }
+
 });

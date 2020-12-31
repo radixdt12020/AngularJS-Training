@@ -1,161 +1,155 @@
-﻿app.controller("productController", function ($scope, $routeParams, $location, ProductService) {
+﻿app.controller("productController", function ($scope, $routeParams, $location, $window, ProductService) {
     $scope.message = "";
+    $scope.IsSuccess = false;
     $scope.showMsg = false;
-
-    $scope.ProductList = [];
-    $scope.ObjProductEmpty = {};
-    $scope.ObjProduct = {
-        ProdId: 1,
-        ProdCode: "P0001",
-        ProdName: "Real me XT",
-        ProdCategory: "Electronics",
-        ProdBrand: "RealMe",
-        ProdColor: "White",
-        ProdPrice: 15000,
-        ProdInStock: true
-    };
-    //$scope.ProductList.push($scope.ObjProduct);
+    $scope.ProductList;
     $scope.ObjProduct = {};
 
     $scope.GetAllProduct = function () {
+       // console.log("GetAllProduct in call in product controller..........!");
         var product = ProductService.getAllProduct();
-        console.log(product);
         product.then(function (response) {
-            debugger
-            console.log(response.data.json);
+            $scope.ProductList = response.data.json;
+            //console.log(response.data);
         }, function (error) {
+            $scope.message = "Something went wrong!";
+            $scope.IsSuccess = false;
             console.log("Error: " + error);
         });
+
     };
 
     $scope.GetByProductId = function (ProdId) {
-        $scope.ObjProduct = angular.copy($scope.ProductList.find(x => x.ProdId == ProdId));
+       // console.log("GetByProductId call in product controller..........!");
         $scope.showMsg = false;
 
         var product = ProductService.getByIdProduct(ProdId);
-        console.log(product);
         product.then(function (response) {
-            console.log(response);
+            $scope.ObjProduct = response.data.json;
+            //console.log(response.data);
         }, function (error) {
+            $scope.message = "Something went wrong!";
+            $scope.IsSuccess = false;
             console.log("Error: " + error);
         });
 
     };
 
     $scope.Add = function (Product) {
-        console.log(Product);
+       // console.log("Add call in product controller..........!");
+        $scope.showMsg = true;
         try {
-            //using static list
-            //if ($scope.ProductList.length > 0) {
-            //    Product.ProdId = $scope.GetNextId();
-            //}
-            //else {
-            //    Product.EmpId = 1;
-            //}
-            //$scope.ProductList.push(Product);
-            debugger;
+            if (!Product.ProdInStock) {
+                Product.ProdInStock = false;
+            }
+            Product.CreatedBy = $window.sessionStorage.getItem("User");
             //call api
             var addProduct = ProductService.postProduct(Product);
             addProduct.then(function (response) {
-                if (response.data != "") {
-                    alert("Product Added Successfully!");
+               // console.log(response.data);
+                if (response.data.isSuccess) {
+                    //$scope.IsSuccess = true;
+                    //$scope.message = "Product Added Successfully!";
+                    $scope.IsSuccess = response.data.isSuccess;
+                    $scope.message = response.data.message;                    
+                    $scope.Reset();
                 } else {
-                    alert("Something went wrong");
+                    //$scope.message = "Something went wrong!";
+                    //$scope.IsSuccess = false;
+                    $scope.IsSuccess = response.data.isSuccess;
+                    $scope.message = response.data.message;
                 }
             }, function (error) {
+                $scope.message = "Something went wrong!";
+                $scope.IsSuccess = false;
                 console.log("Error: " + error);
             });
-            debugger;
-            $scope.showMsg = true;
-            $scope.message = "Product Added Successfully!";
-            $scope.Reset();
         }
         catch{
-            $scope.showMsg = true;
-            $scope.message = "Failed to add Product!";
+            $scope.IsSuccess = false;
+            $scope.message = "Something went wrong!";
         }
     };
 
     $scope.Update = function (Product) {
-        console.log(Product);
+       // console.log("Update call in product controller..........!");
+
         if (Product.ProdId > 0) {
-            //using static list
-            //for (i in $scope.ProductList) {
-            //    if ($scope.ProductList[i].ProdId == Product.ProdId) {
-            //        $scope.ProductList[i] = Product;
-
-            //    }
-            //}
-
+            Product.ModifiedBy = $window.sessionStorage.getItem("User");
             //call api
             var UpdateProduct = ProductService.putProduct(Product);
             UpdateProduct.then(function (response) {
-                if (response.data != "") {
-                    alert("Product Update Successfully!");
-                    //$scope.GetStudents();                   
+                if (response.data.isSuccess) {
+                    $scope.showMsg = true;
+
+                    //$scope.IsSuccess = true;
+                    //$scope.message = "Product Updated Successfully!";
+                    $scope.IsSuccess = response.data.isSuccess;
+                    $scope.message = response.data.message;
+                    //$scope.Reset();
+
+                    //Redirect to product list
+                    alert(response.data.message);
+                    $scope.GetAllProduct();
+                    $location.path('/productList');
                 } else {
-                    alert("Some error");
+                    $scope.showMsg = true;
+                    //$scope.message = "Something went wrong!";
+                    //$scope.IsSuccess = false;
+                    $scope.IsSuccess = response.data.isSuccess;
+                    $scope.message = response.data.message;
                 }
             }, function (error) {
+                $scope.showMsg = true;
+
+                $scope.message = "Something went wrong!";
+                $scope.IsSuccess = false;
                 console.log("Error: " + error);
             });
 
-            $scope.showMsg = true;
-            $scope.message = "Product Updated Successfully!";
-            $scope.Reset();
         }
     };
 
     $scope.Delete = function (Product) {
         check = confirm("Are you sure to delete this product?");
         if (check) {
-            //using static list
-            //var idx = $scope.ProductList.indexOf(Product);
-            //$scope.ProductList.splice(idx, 1);
+            $scope.showMsg = true;
 
             //call api
             var deleteProduct = ProductService.deleteProduct(Product.ProdId);
             deleteProduct.then(function (response) {
-                if (response.data != "") {
-                    alert("Product Delete Successfully!");
+                if (response.data.isSuccess) {
+                    $scope.IsSuccess = true;
+                    $scope.message = "Product Deleted Successfully!";
+
+                    //Redirect to product list
+                    $scope.GetAllProduct();
+                    $location.path('/productList');
+
                 } else {
-                    alert("Something went wrong!");
+                    $scope.message = "Something went wrong!";
+                    $scope.IsSuccess = false;
                 }
             }, function (error) {
+                $scope.message = "Something went wrong!";
+                $scope.IsSuccess = false;
                 console.log("Error: " + error);
             });
 
-            $scope.showMsg = true;
-            $scope.message = "Product Deleted Successfully!";
-            $scope.Reset();
-
-            $location.path('/productList');
         }
-    };
-
-    $scope.GetNextId = function () {
-
-        var ProdId = $scope.ProductList.reduce((a, { ProdId }) => Number(ProdId) > a ? Number(ProdId) : a, -1);
-        return ProdId + 1;
     };
 
     $scope.Reset = function () {
         // $scope.showMsg = false;
         //$scope.message = "";
-        $scope.ObjProduct = angular.copy($scope.ObjProductEmpty);
+        $scope.ObjProduct = {};
         $scope.myForm.$setUntouched();
     };
 
     if ($routeParams.ProdId) {
-        console.log($routeParams.ProdId);
         $scope.GetByProductId($routeParams.ProdId);
     }
 
-    //var IsLogin = sessionStorage.getItem("IsLogin");
-    //if (!IsLogin) {        
-    //    alert("Please login first to access product details");
-    //    $location.path("/login");
-    //}
-    //
+    //Fisr call get all
     $scope.GetAllProduct();
 });

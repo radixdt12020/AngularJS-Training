@@ -10,6 +10,7 @@
     <div>
         <a href="#!productAdd" class="btn btn-primary" title="Add New Product">Add New Product</a>
         <br /><br />
+
         <table class="table table-striped table-bordered">
             <thead class="">
                 <tr>
@@ -21,6 +22,8 @@
                     <th>Color</th>
                     <th>Price</th>
                     <th>In Stock</th>
+                    <th>Entry By</th>
+                    <th>Modified By</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -34,8 +37,11 @@
                     <td>{{prod.ProdColor}}</td>
                     <td>{{prod.ProdPrice}}</td>
                     <td>
-                        {{prod.ProdInStock}}
+                        <span ng-show="prod.ProdInStock">Yes</span>
+                        <span ng-show="!prod.ProdInStock">No</span>
                     </td>
+                    <td>{{prod.CreatedBy}}</td>
+                    <td>{{prod.ModifiedBy}}</td>
                     <td>
                         <a href="#!productEdit/{{prod.ProdId}}" class="btn btn-primary btn-xs" title="Edit Product"><span class="glyphicon glyphicon-pencil"></span></a>
                         <a href="#!productDelete/{{prod.ProdId}}" class="btn btn-danger btn-xs" title="Delete Product"><span class="glyphicon glyphicon-trash"></span></a>

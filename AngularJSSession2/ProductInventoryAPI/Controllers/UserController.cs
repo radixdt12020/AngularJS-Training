@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ProductInventoryAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         public UserController() { }
@@ -19,26 +21,29 @@ namespace ProductInventoryAPI.Controllers
             var errorReponseObject = (new
             {
                 isSuccess = false,
-                message = "User is not exists!"
+                message = "This user is not exists!"
             });
 
             using (ProductInventoryDBEntities ctx = new ProductInventoryDBEntities())
             {
-                var ObjUser = ctx.TblUsers.Where(x => x.UserName.ToLower() == user.UserName.ToLower() && x.Password.Trim() == user.Password.Trim()).FirstOrDefault();
+                TblUser ObjUser = ctx.TblUsers.Where(x => x.UserName.ToLower() == user.UserName.ToLower() && x.Password.Trim() == user.Password.Trim()).FirstOrDefault();
                 if (ObjUser == null)
                 {
                     //return NotFound();
                     return Request.CreateResponse(HttpStatusCode.OK, errorReponseObject);
                 }
+                else
+                {
+                    var json = (new
+                    {
+                        isSuccess = true,
+                        message = "User exists!",
+                        json = ObjUser
+                    });
+                    return Request.CreateResponse(HttpStatusCode.OK, json);
+                }
             }
-            
-            var json = (new
-            {
-                isSuccess = true,
-                message="User exists!"
-            });
 
-            return Request.CreateResponse(HttpStatusCode.OK, json);
         }
     }
 }

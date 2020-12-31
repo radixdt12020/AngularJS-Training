@@ -6,10 +6,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 
 namespace ProductInventoryAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         public ProductController() { }
@@ -142,7 +144,7 @@ namespace ProductInventoryAPI.Controllers
                     ProdInStock = prod.ProdInStock,
                     CreatedBy = prod.CreatedBy,
                     CreatedDate = System.DateTime.Now,
-                    IsActive = prod.IsActive
+                    IsActive = true
                 });
 
                 ctx.SaveChanges();

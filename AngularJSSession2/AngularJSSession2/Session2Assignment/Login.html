@@ -6,7 +6,7 @@
         <h2>Login</h2>
         <div class="row" ng-show="showMsg">
             <div class="col-xs-12">
-                <p class="alert alert-success">
+                <p class="alert alert-danger">
                     <strong>{{message}}</strong>
                 </p>
             </div>
@@ -41,6 +41,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <input type="submit" ng-click="Login(ObjLogin)" class="btn btn-success btn-ls" value="Submit" ng-disabled="loginForm.$invalid" />
+                    <!--<a ng-click="Login(ObjLogin)" href="" class="btn btn-success btn-ls"  ng-disabled="loginForm.$invalid">Submit</a>-->
                     <button class="btn btn-default" ng-click="Reset()">Reset</button>
 
                 </div>
