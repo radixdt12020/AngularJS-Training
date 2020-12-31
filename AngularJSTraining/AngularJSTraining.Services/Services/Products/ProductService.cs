@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AngularJSTraining.Services.API.Products
+namespace AngularJSTraining.Services.Services.Products
 {
     public partial class ProductService : IProductService
     {
@@ -14,19 +14,23 @@ namespace AngularJSTraining.Services.API.Products
         {
             return _dbContext.vProducts.ToList();
         }
-        public vProduct GetProductById(int userId)
+        public vProduct GetProductViewById(int productId)
         {
-            return _dbContext.vProducts.Where(row => row.ProductId == userId).FirstOrDefault();
+            return _dbContext.vProducts.Where(row => row.ProductId == productId).FirstOrDefault();
         }
-        public bool AddProduct(Product product)
+        public Product GetProductById(int productId)
+        {
+            return _dbContext.Products.Where(row => row.Id == productId).FirstOrDefault();
+        }
+        public Product AddProduct(Product product)
         {
             if (product != null)
             {
                 _dbContext.Products.Add(product);
                 _dbContext.SaveChanges();
-                return true;
+                return product;
             }
-            return false;
+            return null;
         }
         public bool UpdateProduct(Product product)
         {

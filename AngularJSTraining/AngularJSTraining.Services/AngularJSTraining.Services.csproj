@@ -72,10 +72,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\Products\IProductService.cs" />
-    <Compile Include="API\Products\ProductService.cs" />
-    <Compile Include="API\Users\IUserService.cs" />
-    <Compile Include="API\Users\UserService.cs" />
+    <Compile Include="Services\Brands\IBrandService.cs" />
+    <Compile Include="Services\Brands\BrandService.cs" />
+    <Compile Include="Services\Categories\ICategoryService.cs" />
+    <Compile Include="Services\Categories\CategoryService.cs" />
+    <Compile Include="Services\Products\IProductService.cs" />
+    <Compile Include="Services\Products\ProductService.cs" />
+    <Compile Include="Services\Users\IUserService.cs" />
+    <Compile Include="Services\Users\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +92,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

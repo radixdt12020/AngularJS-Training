@@ -1,0 +1,34 @@
+﻿<h2 class="text-center">Product List</h2>
+<div class="mainList" ng-controller="productCtrl">
+    <div class="row">
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Stock Availability</th>
+                <th>Arrived At</th>
+                <th>Actions</th>
+            </tr>
+            <tr ng-repeat="prod in productList">
+                <td>{{prod.ProductName}}</td>
+                <td>{{prod.BrandName}}</td>
+                <td>{{prod.CategoryName}}</td>
+                <td>{{prod.Price | currency:'&#8377;'}}</td>
+                <td>{{prod.CategoryName}}</td>
+                <td ng-switch on="prod.IsInStock">
+                    <span ng-switch-when="true">Available</span>
+                    <span ng-switch-when="false">Not Available</span>
+                    <span ng-switch-default></span>
+                </td>
+                <td>{{prod.CreatedDate | date:'dd-MM-yyyy'}}</td>
+                <td>
+                    <button class="btn btn-primary" ng-click="editEmployee(prod.ProductId)">Edit</button>
+                    <button class="btn btn-primary" ng-click="deleteEmployee(prod.ProductId)">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

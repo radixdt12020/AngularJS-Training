@@ -856,6 +856,18 @@
     <Content Include="Scripts\test-bundles\angular-touch.js" />
     <Content Include="Session1\Assignment\Index.html" />
     <Content Include="Session1\Practice Exercise\Index.html" />
+    <Content Include="Session2\Assignment\Home.html" />
+    <Content Include="Session2\Assignment\Index.html" />
+    <Content Include="Session2\Assignment\index.js" />
+    <Content Include="Session2\Assignment\Login.html" />
+    <Content Include="Session2\Assignment\login.js" />
+    <Content Include="Session2\Assignment\main.js" />
+    <Content Include="Session2\Assignment\products\AddEdit.html" />
+    <Content Include="Session2\Assignment\products\brandService.js" />
+    <Content Include="Session2\Assignment\products\categoryService.js" />
+    <Content Include="Session2\Assignment\products\List.html" />
+    <Content Include="Session2\Assignment\products\product.js" />
+    <Content Include="Session2\Assignment\products\productService.js" />
     <Content Include="Session2\Practice Exercise\AboutUs.html" />
     <Content Include="Session2\Practice Exercise\contactus\ContactUs.html" />
     <Content Include="Session2\Practice Exercise\contactus\contactUs.js" />
@@ -909,7 +921,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Session2\Assignment\" />
+    <Folder Include="Session2\Assignment\login\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

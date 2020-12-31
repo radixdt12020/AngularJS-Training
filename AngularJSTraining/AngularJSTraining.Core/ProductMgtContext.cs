@@ -16,6 +16,8 @@ namespace AngularJSTraining.Core
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<vBrand> vBrands { get; set; }
+        public virtual DbSet<vCategory> vCategories { get; set; }
         public virtual DbSet<vProduct> vProducts { get; set; }
         public virtual DbSet<vUser> vUsers { get; set; }
 

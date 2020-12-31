@@ -56,6 +56,8 @@
     <Compile Include="ProductMgtContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="vBrand.cs" />
+    <Compile Include="vCategory.cs" />
     <Compile Include="vProduct.cs" />
     <Compile Include="vUser.cs" />
   </ItemGroup>

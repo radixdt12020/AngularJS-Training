@@ -18,8 +18,18 @@ namespace AngularJSTraining.Core
 
         public decimal? Price { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int CategoryId { get; set; }
+
         [StringLength(100)]
         public string CategoryName { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int BrandId { get; set; }
 
         [StringLength(100)]
         public string BrandName { get; set; }
@@ -28,10 +38,13 @@ namespace AngularJSTraining.Core
         public string Color { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 3)]
         public bool IsInStock { get; set; }
 
         public int? CreatedBy { get; set; }
+
+        [StringLength(101)]
+        public string FullName { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

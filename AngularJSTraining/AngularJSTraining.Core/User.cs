@@ -28,11 +28,14 @@ namespace AngularJSTraining.Core
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string Password { get; set; }
 
         [StringLength(360)]
         public string EmailId { get; set; }
+
+        [StringLength(200)]
+        public string PasswordSalt { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

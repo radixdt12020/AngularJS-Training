@@ -25,3 +25,10 @@
 /AngularJSTraining/AngularJSTraining.Web/obj/Debug
 /AngularJSTraining/AngularJSTraining.Web/Web.Release.config
 /AngularJSTraining/AngularJSTraining.Web/Web.Debug.config
+/AngularJSTraining/AngularJSTraining.Api/obj
+/AngularJSTraining/AngularJSTraining.Api/bin
+/AngularJSTraining/AngularJSTraining.Core/obj/Release
+/AngularJSTraining/AngularJSTraining.Core/bin/Release
+/AngularJSTraining/AngularJSTraining.Services/obj/Release
+/AngularJSTraining/AngularJSTraining.Services/bin/Release
+/AngularJSTraining/AngularJSTraining.Web/obj/Release

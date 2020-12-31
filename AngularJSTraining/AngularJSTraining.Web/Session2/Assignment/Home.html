@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practice Exercise Session 2 & 3</title>
+    <link href="https://localhost:44337/Content/assets/css/bootstrap_3.3.7/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://localhost:44337/Content/assets/css/style.css" rel="stylesheet" />
+    <script src="https://localhost:44337/Content/assets/js/jQuery/jQuery.min.js"></script>
+    <script src="https://localhost:44337/Content/assets/js/bootstrap_3.3.7/bootstrap.min.js"></script>
+    <script src="https://localhost:44337/Scripts/angular.js"></script>
+    <script src="https://localhost:44337/Scripts/angular-route.js"></script>
+    <script src="https://localhost:44337/Session2/Assignment/main.js"></script>
+    <script src="https://localhost:44337/Session2/Assignment/index.js"></script>
+    <script src="https://localhost:44337/Session2/Assignment/login.js"></script>
+</head>
+<body ng-app="myapp">
+    <nav class="navbar navbar-default" ng-controller="indexCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Practice Exercise Session 2 &amp; 3</a>
+            </div>
+            <ul class="nav navbar-nav" ng-repeat="navLink in navLinks">
+                <li><a href="{{navLink.link}}">{{navLink.name}}</a></li>
+                <!--<li class="active"><a href="#/!">Login</a></li>
+                <li><a href="#!home">Home</a></li>
+                <li><a href="#!about-us">About Us</a></li>
+                <li><a href="#!contact-us">Contact Us</a></li>-->
+            </ul>
+        </div>
+    </nav>
+    <div ng-view></div>
+</body>
+</html>

@@ -22,8 +22,11 @@ namespace AngularJSTraining.Core
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(50)]
+        [StringLength(200)]
         public string Password { get; set; }
+
+        [StringLength(200)]
+        public string PasswordSalt { get; set; }
 
         [StringLength(360)]
         public string EmailId { get; set; }

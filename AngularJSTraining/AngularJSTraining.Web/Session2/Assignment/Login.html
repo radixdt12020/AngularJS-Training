@@ -1,0 +1,53 @@
+﻿<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link href="https://localhost:44337/Content/assets/css/bootstrap_3.3.7/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://localhost:44337/Content/assets/css/style.css" rel="stylesheet" />
+    <script src="https://localhost:44337/Content/assets/js/jQuery/jQuery.min.js"></script>
+    <script src="https://localhost:44337/Content/assets/js/bootstrap_3.3.7/bootstrap.min.js"></script>
+    <script src="https://localhost:44337/Scripts/angular.js"></script>
+    <script src="https://localhost:44337/Scripts/angular-route.js"></script>
+    <script src="https://localhost:44337/Session2/Assignment/login.js"></script>
+</head>
+<body ng-app="myapp">-->
+<div class="container" ng-controller="loginCtrl">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
+            <h2>Login</h2>
+            <form name="loginForm">
+                <div class="form-group">
+                    <div class="input-group col-sm-12">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Username"
+                               ng-model="userName" required>
+                        <span class="text-danger" ng-show="loginForm.userName.$touched && loginForm.userName.$invalid">
+                            <span ng-show="loginForm.userName.$error.required">
+                                Username is Required
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group col-sm-12">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                               ng-model="password" required>
+                        <span class="text-danger" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                            <span ng-show="loginForm.password.$error.required">
+                                Password is Required
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <span class="text-danger" ng-show="isIncorrect">
+                    Username Or Password is Incorrect
+                </span>
+                <button type="submit" class="btn btn-primary col-xs-12" ng-click="login()">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--</body>
+</html>-->
