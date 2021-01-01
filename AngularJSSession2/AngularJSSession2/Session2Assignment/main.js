@@ -39,13 +39,16 @@ app.controller("mainController", function ($scope, $window, $location, ProductSe
     $scope.Logout = function () {
         var check = confirm("Are you sure want to logout?");
         if (check) {
+            $scope.ObjLogin = {
+                UserName: "",
+                Password: ""
+            }
             $window.sessionStorage.removeItem("IsLogin");
             $window.sessionStorage.removeItem("User");
             $scope.IsLogin = false;
             $location.url("/");
         }
     }
-
 
     ////login control code   
     $scope.ObjLogin = {
