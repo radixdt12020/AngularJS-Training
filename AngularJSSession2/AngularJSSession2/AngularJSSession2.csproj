@@ -71,7 +71,6 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Session2Assignment\Index.html" />
     <Content Include="Session2Assignment\Login.html" />
-    <Content Include="Session2Assignment\login.js" />
     <Content Include="Session2Assignment\main.js" />
     <Content Include="Session2Assignment\Product\productList.html" />
     <Content Include="Session2Assignment\Product\productDelete.html" />
