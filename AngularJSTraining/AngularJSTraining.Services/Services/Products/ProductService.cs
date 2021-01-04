@@ -46,7 +46,7 @@ namespace AngularJSTraining.Services.Services.Products
         {
             if (productId > 0)
             {
-                Product product = _dbContext.Products.Where(row => row.Id == productId).FirstOrDefault();
+                Product product = _dbContext.Products.Where(row => row.Id == productId).SingleOrDefault();
                 if (product != null)
                 {
                     _dbContext.Entry(product).State = System.Data.Entity.EntityState.Deleted;

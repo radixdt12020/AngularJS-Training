@@ -1,5 +1,23 @@
-﻿<div class="main" ng-controller="productCtrl">
-    <div class="row">
+﻿<style>
+    div.hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eee;
+        text-align: center;
+        height: 0px;
+        line-height: 0px;
+    }
+
+    .hr-title {
+        background-color: #fff;
+    }
+</style>
+<div class="main" ng-controller="productCtrl">
+    <a href="#!product-list" class="btn btn-primary">
+        Back to Product List
+    </a>
+    <div class="row" ng-if="userId != null">
         <div class="col-md-12">
             <form class="form-horizontal" name="productForm">
                 <!--Name-->
@@ -19,26 +37,36 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="gender">Select Brand</label>
                     <div class="col-sm-10">
-                        <select id="brand" class="form-control" ng-model="product.BrandId">
+                        <select id="brand" name="brand" class="form-control" ng-model="product.BrandId" required>
                             <option selected="selected" value="">--- Select ---</option>
                             <option ng-repeat="brand in brands"
                                     value="{{brand.Id}}">
                                 {{brand.BrandName}}
                             </option>
                         </select>
+                        <span class="text-danger" ng-show="productForm.brand.$touched && productForm.brand.$invalid">
+                            <span ng-show="productForm.brand.$error.required">
+                                Please select a brand
+                            </span>
+                        </span>
                     </div>
                 </div>
                 <!--Category-->
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="gender">Select Category</label>
                     <div class="col-sm-10">
-                        <select id="category" class="form-control" ng-model="product.CategoryId">
+                        <select id="category" name="category" class="form-control" ng-model="product.CategoryId" required>
                             <option selected="selected" value="">--- Select ---</option>
                             <option ng-repeat="cat in categories"
                                     value="{{cat.Id}}">
                                 {{cat.CategoryName}}
                             </option>
                         </select>
+                        <span class="text-danger" ng-show="productForm.category.$touched && productForm.category.$invalid">
+                            <span ng-show="productForm.category.$error.required">
+                                Please select a category
+                            </span>
+                        </span>
                     </div>
                 </div>
                 <!--Price-->
@@ -80,20 +108,27 @@
                         </div>
                     </div>
                 </div>
-                <!--Created Date-->
-                <div class="form-group">
-                    <label class="control-label col-sm-2" l for="date">Product will Arrive At</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" id="date" name="date" ng-model="product.CreatedDate"
-                               data-date-format="dd-mm-yyyy" required>
-                        <span class="text-danger" ng-show="productForm.date.$touched && productForm.date.$invalid">
-                            <span ng-show="productForm.date.$error.required">
-                                Product Arrival Date is required.
-                            </span>
-                        </span>
+                <div ng-if="product.CreatedDate">
+                    <div class='hr'>
+                        <span class='hr-title'>View Only</span>
+                    </div>
+                    <!--Created Date-->
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="date">Product Arrival At</label>
+                        <div class="col-sm-10">
+                            <label class="form-control" for="date">{{product.CreatedDate | date:"dd/MM/yyyy 'at' h:mma"}}</label>
+                        </div>
+                    </div>
+                    <!--Created By-->
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="fullName">Product Created By</label>
+                        <div class="col-sm-10">
+                            <label class="form-control" for="fullName">{{product.FullName}}</label>
+                        </div>
                     </div>
                 </div>
-                
+
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success" ng-disabled="productForm.$invalid"
@@ -105,5 +140,8 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div ng-if="userId == null || userId == undefined">
+        <h2 class="text-center text-danger">Access Denied</h2>
     </div>
 </div>

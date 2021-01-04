@@ -1,23 +1,47 @@
-﻿app.controller("indexCtrl", function ($scope, $filter, $location) {
-    $scope.navLinks = [];
-
-    if (sessionStorage.getItem("userName")) {
-        $scope.userName = sessionStorage.getItem("userName");
-        var getNavLink = $filter('filter')($scope.navLinks, { "name": "Login" });
-        var index = $scope.navLinks.indexOf(getNavLink);
-        $scope.navLinks.splice(index, 1);
-        var navLink1 = { link: "#!", name: "Logout" };
-        var navLink2 = { link: "#!product-list", name: "Product List" };
-        var navLink3 = { link: "#!product-add", name: "Add Product" };
-        $scope.navLinks.push(navLink1);
-        $scope.navLinks.push(navLink2);
-        $scope.navLinks.push(navLink3);
+﻿app.controller("indexCtrl", function ($scope, $filter, $location, $http) {
+    $scope.userName = sessionStorage.getItem("userName");
+    $scope.isAuthenticated = false;
+    if ($scope.userName) {
+        $scope.isAuthenticated = true;
     }
-    else {
-        var navLink1 = { link: "#!login", name: "Login" };
-        var navLink2 = { link: "#!home", name: "Home" };
-        $scope.navLinks.push(navLink1);
-        $scope.navLinks.push(navLink2);
-        //$location.url("#!login");
+
+    $scope.password = "";
+    $scope.isIncorrect = false;
+    $scope.isLoginClicked = false;
+    $scope.loginNav = function () {
+        $scope.isLoginClicked = true;
+    }
+    $scope.login = function () {
+        $http.get("http://localhost:8020/api/User/Get?userName=" + $scope.userName + "&password=" + $scope.password)
+            .then(function (response) {
+                if (response.status == 200) {
+                    var authenticatedUser = response.data.result;
+                    if (authenticatedUser) {
+                        $scope.isIncorrect = false;
+                        sessionStorage.setItem("userName", $scope.userName);
+                        sessionStorage.setItem("userId", authenticatedUser.Id);
+                        $scope.isLoginClicked = false;
+                        $scope.isAuthenticated = true;
+                        $location.url("/home");
+                    }
+                    else {
+                        $scope.isIncorrect = true;
+                    }
+                }
+
+            }, function (error) {
+                console.log(error);
+                alert("Error Occurred");
+            });
+    }
+
+    $scope.logout = function () {
+        debugger
+        $scope.isAuthenticated = false;
+        sessionStorage.removeItem("userName");
+        sessionStorage.removeItem("userId");
+        $scope.userName = "";
+        $scope.password = "";
+        $location.url("/home");
     }
 });

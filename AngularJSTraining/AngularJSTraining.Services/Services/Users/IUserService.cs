@@ -7,6 +7,7 @@ namespace AngularJSTraining.Services.Services.Users
     {
         List<vUser> GetAllUsers();
         vUser GetUserById(int userId);
-        bool IsAuthenticatedUser(string userName, string password);
+        vUser GetUserByUserName(string userName);
+        vUser IsAuthenticatedUser(string userName, string password);
     }
 }

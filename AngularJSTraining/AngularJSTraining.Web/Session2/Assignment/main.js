@@ -9,10 +9,9 @@ app.config(function ($routeProvider) {
             templateUrl: "Login.html",
             controller: "loginCtrl"
         })
-        //.when("/home", {
-        //    templateUrl: "Home.html",
-        //    controller: "indexCtrl"
-        //})
+        .when("/home", {
+            template: "<h2 class='text-center'>Welcome to Product Management System!</h2>",
+        })
         .when("/product-list", {
             templateUrl: "products/List.html",
             controller: "productCtrl"

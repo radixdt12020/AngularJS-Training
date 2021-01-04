@@ -73,8 +73,8 @@ namespace AngularJSTraining.Api.Controllers.Api
                     Price = product.Price,
                     IsInStock = product.IsInStock,
                     CreatedBy = product.CreatedBy,
-                    CreatedDate = product.CreatedDate
-                };
+                    CreatedDate = DateTime.Now
+            };
                 var resultProduct = _productService.AddProduct(addProduct);
                 return Ok(new { result = resultProduct });
             }
@@ -94,8 +94,19 @@ namespace AngularJSTraining.Api.Controllers.Api
             try
             {
                 Product product = _productService.GetProductById(vProduct.ProductId);
+
                 if (product != null)
                 {
+                    product.BrandId = vProduct.BrandId;
+                    product.CategoryId = vProduct.CategoryId;
+                    product.Color = vProduct.Color;
+                    product.ProductName = vProduct.ProductName;
+                    product.Price = vProduct.Price;
+                    product.IsInStock = vProduct.IsInStock;
+                    product.CreatedBy = (product.CreatedBy == null) ? vProduct.CreatedBy : product.CreatedBy;
+                    product.CreatedDate = (product.CreatedDate == null) ? DateTime.Now : product.CreatedDate;
+                    product.LastModifiedBy = vProduct.LastModifiedBy;
+                    product.LastModifiedDate = DateTime.Now;
                     var resultData = _productService.UpdateProduct(product);
                     return Ok(new { result = resultData });
                 }

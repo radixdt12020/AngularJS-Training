@@ -11,26 +11,65 @@
     <script src="https://localhost:44337/Scripts/angular-route.js"></script>
     <script src="https://localhost:44337/Session2/Assignment/main.js"></script>
     <script src="https://localhost:44337/Session2/Assignment/index.js"></script>
-    <script src="https://localhost:44337/Session2/Assignment/login.js"></script>
+    <!--<script src="https://localhost:44337/Session2/Assignment/login.js"></script>-->
     <script src="https://localhost:44337/Session2/Assignment/products/productService.js"></script>
     <script src="https://localhost:44337/Session2/Assignment/products/brandService.js"></script>
     <script src="https://localhost:44337/Session2/Assignment/products/categoryService.js"></script>
     <script src="https://localhost:44337/Session2/Assignment/products/product.js"></script>
 </head>
-<body ng-app="myapp">
+<body ng-app="myapp" ng-controller="indexCtrl">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Practice Exercise Session 2 &amp; 3</a>
+                <a class="navbar-brand" href="#">Product Management System</a>
+                <span class="navbar-brand" ng-show="isAuthenticated">Hi, {{userName}}</span>
             </div>
             <ul class="nav navbar-nav">
                 <!--<li><a href="{{navLink.link}}">{{navLink.name}}</a></li>-->
-                <li><a href="#!login">Login</a></li>
+                <li ng-show="!isAuthenticated"><a href="#" ng-click="loginNav()">Login</a></li>
                 <li><a href="#!home">Home</a></li>
-                <li><a href="#!product-add">Add Product</a></li>
+                <li><a href="#!product-list">Product List</a></li>
+                <li ng-show="isAuthenticated"><a href="#!home" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
     </nav>
+    <div class="container" ng-show="isLoginClicked">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
+                <h2>Login</h2>
+                <form name="loginForm">
+                    <div class="form-group">
+                        <div class="input-group col-sm-12">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" id="userName" name="userName" placeholder="Username"
+                                   ng-model="userName" required>
+                            <span class="text-danger" ng-show="loginForm.userName.$touched && loginForm.userName.$invalid">
+                                <span ng-show="loginForm.userName.$error.required">
+                                    Username is Required
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group col-sm-12">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                                   ng-model="password" required>
+                            <span class="text-danger" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                                <span ng-show="loginForm.password.$error.required">
+                                    Password is Required
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-danger" ng-show="isIncorrect">
+                        Username Or Password is Incorrect
+                    </span>
+                    <button type="submit" class="btn btn-primary col-xs-12" ng-click="login()">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div ng-view></div>
 </body>
 </html>

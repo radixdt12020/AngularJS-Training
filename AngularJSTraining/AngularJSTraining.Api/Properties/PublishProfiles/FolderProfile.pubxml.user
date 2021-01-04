@@ -10,10 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AngularJSTraining.Api.dll">
-      <publishTime>12/31/2020 18:07:38</publishTime>
+      <publishTime>01/01/2021 13:25:14</publishTime>
     </File>
     <File Include="bin/AngularJSTraining.Api.pdb">
-      <publishTime>12/31/2020 18:07:38</publishTime>
+      <publishTime>01/01/2021 13:25:14</publishTime>
     </File>
     <File Include="bin/AngularJSTraining.Core.dll">
       <publishTime>12/31/2020 18:07:37</publishTime>
@@ -25,13 +25,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/31/2020 18:07:37</publishTime>
     </File>
     <File Include="bin/AngularJSTraining.Services.dll">
-      <publishTime>12/31/2020 18:07:38</publishTime>
+      <publishTime>01/01/2021 13:25:14</publishTime>
     </File>
     <File Include="bin/AngularJSTraining.Services.dll.config">
       <publishTime>12/29/2020 20:11:54</publishTime>
     </File>
     <File Include="bin/AngularJSTraining.Services.pdb">
-      <publishTime>12/31/2020 18:07:38</publishTime>
+      <publishTime>01/01/2021 13:25:14</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/16/2020 20:38:42</publishTime>
@@ -232,7 +232,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/30/2020 15:18:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/30/2020 18:00:09</publishTime>
+      <publishTime>01/01/2021 12:25:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

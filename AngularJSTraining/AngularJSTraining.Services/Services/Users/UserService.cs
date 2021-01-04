@@ -20,7 +20,11 @@ namespace AngularJSTraining.Services.Services.Users
         {
             return _dbContext.vUsers.Where(row => row.Id == userId).FirstOrDefault();
         }
-        public bool IsAuthenticatedUser(string userName, string password)
+        public vUser GetUserByUserName(string userName)
+        {
+            return _dbContext.vUsers.Where(row => row.UserName == userName).FirstOrDefault();
+        }
+        public vUser IsAuthenticatedUser(string userName, string password)
         {
             var getUser = _dbContext.vUsers.FirstOrDefault(t => t.UserName == userName);
             if (getUser != null)
@@ -28,10 +32,10 @@ namespace AngularJSTraining.Services.Services.Users
                 password = Encryptdata(password);
                 if (getUser.PasswordSalt == password)
                 {
-                    return true;
+                    return getUser;
                 }
             }
-            return false;
+            return null;
         }
         public void InsertUser(User user)
         {
