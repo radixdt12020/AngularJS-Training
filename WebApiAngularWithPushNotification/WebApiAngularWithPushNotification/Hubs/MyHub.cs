@@ -24,12 +24,7 @@ namespace WebApiAngularWithPushNotification.Hubs
         public void Unsubscribe(string customerId)
         {
             Groups.Remove(Context.ConnectionId, customerId);
-        }
-
-        //
-        //public void updateItem(Customer_Complaint customer_Complaint)
-        //{
-        //    Clients.Group(customer_Complaint.CustomerId).updateItem(customer_Complaint);
-        //}
+        }        
+        
     }
 }

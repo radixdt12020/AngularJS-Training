@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SignalRDemoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SignalRDemoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer_Complaint">
           <Key>
             <PropertyRef Name="ComplaintId" />
@@ -12,15 +12,20 @@
           <Property Name="ComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="varchar" MaxLength="10" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="FileName" Type="varchar(max)" />
+          <Property Name="FilePath" Type="varchar(max)" />
+          <Property Name="FileData" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="SignalRDemoDBModelStoreContainer">
           <EntitySet Name="Customer_Complaint" EntityType="Self.Customer_Complaint" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SignalRDemoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SignalRDemoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer_Complaint" EntityType="SignalRDemoDBModel.Customer_Complaint" />
+        </EntityContainer>
         <EntityType Name="Customer_Complaint">
           <Key>
             <PropertyRef Name="ComplaintId" />
@@ -28,10 +33,10 @@
           <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="SignalRDemoDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customer_Complaint" EntityType="Self.Customer_Complaint" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,9 +46,12 @@
           <EntitySetMapping Name="Customer_Complaint">
             <EntityTypeMapping TypeName="SignalRDemoDBModel.Customer_Complaint">
               <MappingFragment StoreEntitySet="Customer_Complaint">
-                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

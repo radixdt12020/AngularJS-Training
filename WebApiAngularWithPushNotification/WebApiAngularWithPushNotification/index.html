@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Customer Complaints</title>   
     <script src="Scripts/angular.min.js"></script>
+
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-cloak>
     <div>
@@ -19,12 +20,17 @@
                 <tr>
                     <th>Complaint id</th>
                     <th>Description</th>
+                    <th>File Name</th>
+                    <th>File</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="complaint in complaints | orderBy:orderProp">
                     <td>{{complaint.ComplaintId}}</td>
                     <td>{{complaint.Description}}</td>
+                    <td>{{complaint.FileName}}</td>
+                    <!--<td><img data-ng-src="{{complaint.FileData}}" /></td>-->
+                    <td><img src="{{complaint.FilePath}}" /></td>
                     <td>
                         <button ng-click="editIt(complaint)"> Edit </button>
                     </td>
@@ -38,7 +44,8 @@
 
     <div>
         <h2>Add complaint</h2>
-        <input type="text" ng-model="descToAdd" size="40" placeholder="Description" />
+        <input type="text" ng-model="descToAdd" size="40" placeholder="Description" /> <br />
+        <input type="file" id="uploadFile"  name="uploadFile" ng-model="uploadFile"/> <br /><br />
         <input type="button" value="Add" ng-click="postOne();" />
         <p ng-show="errorToAdd">{{errorToAdd}}</p>
     </div>

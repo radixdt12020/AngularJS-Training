@@ -17,5 +17,8 @@ namespace WebApiAngularWithPushNotification
         public int ComplaintId { get; set; }
         public string CustomerId { get; set; }
         public string Description { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
+        public string FileData { get; set; }
     }
 }
